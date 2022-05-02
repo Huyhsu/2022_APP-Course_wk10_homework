@@ -1,15 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
-
+import { createSlice } from "@reduxjs/toolkit";
 
 // Part1: Define Slice (including reducers and actions)
 const initialState = { counterValue: 0 };
 
 const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   reducers: {
-    setCounter: (state, action) => {
-      state.counterValue = action.payload;
+    // setCounter: (state, action) => {
+    //   state.counterValue = action.payload;
+    // },
+    increaseOne: (state, action) => {
+      state.counterValue = action.payload + 1;
+    },
+    decreaseOne: (state, action) => {
+      state.counterValue = action.payload - 1;
     },
   },
 });
@@ -18,7 +23,8 @@ const counterSlice = createSlice({
 export const selectCounter = (state) => state.counter.counterValue;
 
 // export actions to global
-export const { setCounter } = counterSlice.actions;
+// export const { setCounter } = counterSlice.actions;
+export const { increaseOne, decreaseOne } = counterSlice.actions;
 
 // export reducer to global
 export default counterSlice.reducer;
